@@ -10,20 +10,24 @@ class Solution{
 	{
 		// Your code goes here
 		// TC - O(N^2)
-        // SC - O(1)
+        // SC - O(N^2)
         vector<int> ans;
 
-        for(int row=0;row<N;row++){
-            for(int col=row;col<N;col++){
-            int tempRow=row,tempCol=col;
+        for(int col=0;col<N;col++){
+            int tempRow=0,tempCol=col;
             while(tempRow<N && tempCol>=0){
-                if(A[tempRow][tempCol]<0)break;
                 ans.push_back(A[tempRow][tempCol]);
-                A[tempRow][tempCol]=-1;
                 tempRow++;
                 tempCol--;
             }
         }
+        for(int row=1;row<N;row++){
+            int tempRow=row,tempCol=N-1;
+            while(tempRow<N && tempCol>=0){
+                ans.push_back(A[tempRow][tempCol]);
+                tempRow++;
+                tempCol--;
+            }
         }
         return ans;
 	}

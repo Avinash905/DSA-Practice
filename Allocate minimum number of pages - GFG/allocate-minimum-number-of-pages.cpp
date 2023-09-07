@@ -15,35 +15,34 @@ class Solution
     int findPages(int A[], int N, int M) 
     {
         //code here
+        // TC - O(Nlog(sum(array)))
+        // SC - O(1)
         if(M>N)return -1;
         
-        int s=A[0],e=0,ans=0;
-        for(int i=0;i<N;i++){
-            e+=A[i];
-            if(A[i]>s)s=A[i];
-        }
-        int mid=s+(e-s)/2;
+        int start=0,end=0,ans=-1;
+        for(int i=0;i<N;i++)end+=A[i];
         
-        while(s<=e){
-            int count=1,sum=0;
-            for(int j=0;j<N;j++){
-                if(A[j]>mid){
-                    count=M+1;
+        while(start<=end){
+            int mid=start+(end-start)/2;
+            
+            int students=1,pages=0;
+            for(int i=0;i<N;i++){
+                if(A[i]>mid){
+                    students=M+1;
                     break;
                 }
-                sum+=A[j];
-                if(sum>mid){
-                    count++;
-                    sum=A[j];
+                pages+=A[i];
+                if(pages>mid){
+                    students++;
+                    pages=A[i];
                 }
             }
-            if(count<=M){
-                ans=mid;
-                e=mid-1;
-            }
-            else s=mid+1;
             
-            mid=s+(e-s)/2;
+            if(students<=M){
+                ans=mid;
+                end=mid-1;
+            }
+            else start=mid+1;
         }
         return ans;
     }

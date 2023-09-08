@@ -6,18 +6,19 @@ using namespace std;
 // } Driver Code Ends
 //User function template for C++
 class Solution{
-public:
+public:	
 	int matSearch (vector <vector <int>> &mat, int N, int M, int X)
 	{
 	    // your code here
-	    // TC - O(N+M)
-	    // SC - O(1)
-	    
 	    int row=N-1,col=0;
-	    while(row>=0 && col>=0 && row<N && col<M){
+	    while(row>=0 && col<M){
 	        if(mat[row][col]==X)return 1;
-	        else if(X<mat[row][col])row--;
-	        else col++;
+	        else if(mat[row][col]>X){
+	            row--;
+	        }
+	        else if(mat[row][col]<X){
+	            col++;
+	        }
 	    }
 	    return 0;
 	}

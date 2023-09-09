@@ -11,34 +11,37 @@ using namespace std;
 class Solution 
 {
     public:
+    bool isValid(int A[],int N,int M,int mid){
+        int pages=0,students=1;
+        for(int i=0;i<N;i++){
+            pages+=A[i];
+            if(pages>mid){
+                students++;
+                pages=A[i];
+            }
+            if(students>M)return false;
+        }
+        return true;
+    }
     //Function to find minimum number of pages.
     int findPages(int A[], int N, int M) 
     {
         //code here
         // TC - O(Nlog(sum(array)))
         // SC - O(1)
+        
         if(M>N)return -1;
         
-        int start=0,end=0,ans=-1;
-        for(int i=0;i<N;i++)end+=A[i];
+        int start=0,end=0,ans=0;
+        for(int i=0;i<N;i++){
+            end+=A[i];
+            start=max(A[i],start);
+        }
         
         while(start<=end){
             int mid=start+(end-start)/2;
             
-            int students=1,pages=0;
-            for(int i=0;i<N;i++){
-                if(A[i]>mid){
-                    students=M+1;
-                    break;
-                }
-                pages+=A[i];
-                if(pages>mid){
-                    students++;
-                    pages=A[i];
-                }
-            }
-            
-            if(students<=M){
+            if(isValid(A,N,M,mid)){
                 ans=mid;
                 end=mid-1;
             }

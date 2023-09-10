@@ -14,16 +14,10 @@ class Solution
         // TC - O(n)
         // SC - O(1)
         int left=0,right=n-1,mid=0;
+        
         while(mid<=right){
-            if(a[mid]==2){
-                swap(a[mid],a[right]);
-                right--;
-            }
-            else if(a[mid]==0){
-                swap(a[mid],a[left]);
-                left++;
-                mid++;
-            }
+            if(a[mid]==0)swap(a[mid++],a[left++]);
+            else if(a[mid]==2)swap(a[mid],a[right--]);
             else mid++;
         }
     }

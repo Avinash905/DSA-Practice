@@ -14,22 +14,15 @@ class Solution{
         //Your code here
         //return vector with correct order of elements
         // TC - O(n+m)
-        // SC - O(n+m)
+        // SC - O(n)
         int i=0,j=0;
         vector<int> ans;
         while(i<n && j<m){
-            int size=ans.size();
-            while(size>0 && ans[size-1]==arr1[i])i++;
-            while(size>0 && ans[size-1]==arr2[j])j++;
+            while(ans.size()>0 && i<n && ans[ans.size()-1]==arr1[i])i++;
+            while(ans.size()>0 && j<m && ans[ans.size()-1]==arr2[j])j++;
             
-            if(i<n && j<m && arr1[i]<arr2[j]){
-                ans.push_back(arr1[i]);
-                i++;
-            }
-            else if(i<n && j<m && arr1[i]>arr2[j]){
-                ans.push_back(arr2[j]);
-                j++;
-            }
+            if(i<n && j<m && arr1[i]<arr2[j])ans.push_back(arr1[i++]);
+            else if(i<n && j<m && arr1[i]>arr2[j])ans.push_back(arr2[j++]);
             else if(i<n && j<m && arr1[i]==arr2[j]){
                 ans.push_back(arr1[i]);
                 i++;
@@ -37,22 +30,12 @@ class Solution{
             }
         }
         while(i<n){
-            int size=ans.size();
-            if(size>0 && ans[size-1]==arr1[i]){
-                i++;
-                continue;
-            }
-            ans.push_back(arr1[i]);
-            i++;
+            if(ans.size()>0 && ans[ans.size()-1]==arr1[i])i++;
+            else ans.push_back(arr1[i++]);
         }
         while(j<m){
-            int size=ans.size();
-            if(size>0 && ans[size-1]==arr2[j]){
-                j++;
-                continue;
-            }
-            ans.push_back(arr2[j]);
-            j++;
+            if(ans.size()>0 && ans[ans.size()-1]==arr2[j])j++;
+            else ans.push_back(arr2[j++]);
         }
         return ans;
     }

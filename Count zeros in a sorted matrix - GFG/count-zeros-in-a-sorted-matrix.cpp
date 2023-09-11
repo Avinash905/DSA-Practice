@@ -11,17 +11,17 @@ public:
 	int countZeros(vector<vector<int>>A)
 	{
 		//code here
-		// TC - O(N)
-	    // SC - O(1)
-		int N=A.size(),row=0,col=N-1,ans=0;
-	    while(row<N && col>=0){
-	        if(A[row][col]==1)col--;
-	        else{
-	            ans+=(col+1);
-	            row++;
-	        }
-	    }
-	    return ans;
+		// TC - O(n)
+        // SC - O(1)
+        int n=A.size(),col=n-1,count=0;
+        for(int row=0;row<n;row++){
+            while(row<n && col>=0){
+                if(A[row][col]==1)col--;
+                else break;
+            }
+            count+=(col+1);
+        }
+        return count;
 	}
 };
 

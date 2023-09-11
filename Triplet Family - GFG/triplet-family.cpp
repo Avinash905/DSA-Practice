@@ -40,17 +40,15 @@ int main()
 // Note: container should be contain 3 elements or 0 elements only.
 vector<int> findTriplet(int arr[], int n)
 {
-    vector<int> result;
     // code here
+    // 
+    vector<int> result;
     sort(arr,arr+n);
     for(int k=n-1;k>=1;k--){
         int i=0,j=k-1;
         while(i<j){
             if(arr[i]+arr[j]==arr[k]){
-                result.push_back(arr[i]);
-                result.push_back(arr[j]);
-                result.push_back(arr[k]);
-                return result;
+                return {arr[i],arr[j],arr[k]};
             }
             else if(arr[i]+arr[j]>arr[k])j--;
             else i++;

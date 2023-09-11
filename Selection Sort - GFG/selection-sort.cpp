@@ -16,10 +16,9 @@ class Solution
     int select(int arr[], int i,int n)
     {
         // code here such that selectionSort() sorts arr[]
-        int mini=INT_MAX,minIdx=0;
+        int minIdx=i;
         for(int j=i;j<n;j++){
-            if(mini>arr[j]){
-                mini=arr[j];
+            if(arr[j]<arr[minIdx]){
                 minIdx=j;
             }
         }
@@ -29,10 +28,11 @@ class Solution
     void selectionSort(int arr[], int n)
     {
        //code here
+       // TC - O(n^2)
+       // SC - O(1)
        for(int i=0;i<n-1;i++){
-           int minIdx=select(arr,i+1,n);
-           if(arr[i]>arr[minIdx])
-           swap(arr[i],arr[minIdx]);
+           int idx=select(arr,i+1,n);
+           if(arr[i]>arr[idx])swap(arr[i],arr[idx]);
        }
     }
 };

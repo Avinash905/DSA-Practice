@@ -22,6 +22,18 @@ return 0;
 
 string sort(string s){
     //complete the function here
-    sort(s.begin(),s.end());
+    // TC - O(n)
+    // SC - O(1)
+    int freq[26]={0};
+    for(int i=0;i<s.size();i++){
+        freq[s[i]-'a']++;
+    }
+    s="";
+    for(int i=0;i<26;i++){
+        while(freq[i]>0){
+            s+=(i+'a');
+            freq[i]--;
+        }
+    }
     return s;
 }

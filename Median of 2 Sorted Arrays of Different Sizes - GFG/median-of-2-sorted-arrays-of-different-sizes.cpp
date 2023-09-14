@@ -14,39 +14,26 @@ class Solution{
     double MedianOfArrays(vector<int>& array1, vector<int>& array2)
     {
         // Your code goes here
-        // TC - O(N+M)
-        // SC - O(N+M)
+        // TC - O(n+m)
+        // SC - O(1)
         
-        int i=0,j=0,k=0,n=array1.size(),m=array2.size();
+        int i=0,j=0,n=array1.size(),m=array2.size(),first,second;
         
-        while(i<n && j<m){
-            if(array1[i]<array2[j]){
-                q.push(array1[i++]);
+        for(int k=0;k<=(n+m)/2;k++){
+            first=second;
+            if(i<n && j<m){
+                if(array1[i]<array2[j]){
+                    second=array1[i++];
+                }
+                else if(array1[i]>=array2[j]){
+                    second=array2[j++];
+                }
             }
-            else if(array1[i]>=array2[j]){
-                q.push(array2[j++]);
-            }
+            else if(i<n)second=array1[i++];
+            else second=array2[j++];
         }
-        while(i<n){
-            q.push(array1[i++]);
-        }
-        while(j<m){
-            q.push(array2[j++]);
-        }
-        while(!q.empty()){
-            if((n+m)%2==0 && k==(n+m)/2-1){
-                double first=q.front();
-                q.pop();
-                double second=q.front();
-                return (first+second)/2;
-            }
-            else if((n+m)%2==1 && k==(n+m)/2){
-                return q.front();
-            }
-            q.pop();
-            k++;
-        }
-        return -1;
+        
+        return (n+m)%2==0?(first+second)/2.0:second;
     }
 };
 

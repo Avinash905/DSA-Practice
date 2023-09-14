@@ -14,8 +14,11 @@ class Solution{
     double MedianOfArrays(vector<int>& array1, vector<int>& array2)
     {
         // Your code goes here
+        // TC - O(N+M)
+        // SC - O(N+M)
+        
         int i=0,j=0,k=0,n=array1.size(),m=array2.size();
-        queue<int> q;
+        
         while(i<n && j<m){
             if(array1[i]<array2[j]){
                 q.push(array1[i++]);

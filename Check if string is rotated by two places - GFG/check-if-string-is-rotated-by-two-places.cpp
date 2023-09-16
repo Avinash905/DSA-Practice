@@ -39,7 +39,7 @@ class Solution
     {
         // Your code here
         // TC - O(n)
-        // SC - O(n)
+        // SC - O(1)
         
         if(str1==str2)return 1;
         

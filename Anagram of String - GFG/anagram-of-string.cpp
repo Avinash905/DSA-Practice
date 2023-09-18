@@ -31,19 +31,18 @@ int remAnagram(string str1, string str2)
 {
     // Your code goes here
     // TC - O(n)
-    // SC - O(26)
+    // SC - O(1)
     int freq[26]={0};
-    for(int i=0;i<max(str1.size(),str2.size());i++){
-        if(str1.size()>str2.size())freq[str1[i]-'a']++;
-        else freq[str2[i]-'a']++;
+    int count=0;
+    
+    for(int i=0;i<str1.length();i++){
+        freq[str1[i]-'a']++;
     }
-    for(int i=0;i<min(str1.size(),str2.size());i++){
-        if(str1.size()>str2.size())freq[str2[i]-'a']--;
-        else freq[str1[i]-'a']--;
+    for(int i=0;i<str2.length();i++){
+        freq[str2[i]-'a']--;
     }
-    int ans=0;
     for(int i=0;i<26;i++){
-        ans+=abs(freq[i]);
+        count+=abs(freq[i]);
     }
-    return ans;
+    return count;
 }

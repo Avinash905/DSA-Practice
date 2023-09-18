@@ -13,23 +13,24 @@ class Solution{
     string longestCommonPrefix (string arr[], int N)
     {
         // your code here
-        // TC - O(n)
-        // SC - O(1)
-        // int freq[26]={0};
+        // TC - O(N*min(arr))
+        // SC - O(min(arr))
         string ans="";
-        int minSize=INT_MAX;
+        int minIdx=0,mini=INT_MAX;
         for(int i=0;i<N;i++){
-            int n=arr[i].length();
-            minSize=min(minSize,n);
+            if(arr[i].size()<mini){
+                minIdx=i;
+                mini=arr[i].size();
+            }
         }
-        
-        for(int i=0;i<minSize;i++){
-            char ch=arr[0][i];
+        for(int i=0;i<mini;i++){
+            char ch=arr[minIdx][i];
             int j=0;
             for(;j<N;j++){
                 if(arr[j][i]!=ch)break;
             }
-            if(j==N)ans+=ch;
+            if(j!=N)break;
+            else ans+=ch;
         }
         if(ans=="")return "-1";
         return ans;

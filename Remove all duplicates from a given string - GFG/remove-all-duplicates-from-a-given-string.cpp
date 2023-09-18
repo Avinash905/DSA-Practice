@@ -11,17 +11,21 @@ public:
 	string removeDuplicates(string str) {
 	    // code here
 	    // TC - O(n)
-	    // SC - O(n)
-	    unordered_map<char,int> mp;
-	    string ans="";
-	    int n=str.size();
+	    // SC - O(1)
+	    int freq[127]={0};
+	    int j=0,n=str.size();
+	    
 	    for(int i=0;i<n;i++){
-	        if(mp.find(str[i])==mp.end()){
-	            ans+=str[i];
-	            mp[str[i]]++;
+	        while(freq[int(str[i])]!=0 && i<n){
+	            i++;
+	        }
+	        if(freq[int(str[i])]==0){
+	            freq[int(str[i])]++;
+	            swap(str[i],str[j]);
+	            j++;
 	        }
 	    }
-	    return ans;
+	    return str.substr(0,j);
 	}
 };
 

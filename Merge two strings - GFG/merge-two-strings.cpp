@@ -25,27 +25,20 @@ int main()
 string merge (string s1, string s2)
 {
     // your code here
+    // TC - O(n1+n2)
+    // SC - O(n1+n2)
+    
+    string s="";
     int i=0,j=0,k=0,n1=s1.size(),n2=s2.size();
-    string ans="";
-    while(i<n1 && j<n2){
-        if(k%2==0){
-            ans+=s1[i];
+    while(k<n1+n2){
+        if(i<n1){
+            s+=s1[i++];
             k++;
-            i++;
         }
-        else{
-            ans+=s2[j];
+        if(j<n2){
+            s+=s2[j++];
             k++;
-            j++;
         }
     }
-    while(i<n1){
-        ans+=s1[i];
-        i++;
-    }
-    while(j<n2){
-        ans+=s2[j];
-        j++;
-    }
-    return ans;
+    return s;
 }

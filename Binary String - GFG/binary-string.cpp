@@ -10,13 +10,13 @@ class Solution
     public:
     //Function to count the number of substrings that start and end with 1.
     long binarySubstring(int n, string a){
+        
         // Your code here
-        int count=0;
+        int countOne=0;
         for(int i=0;i<n;i++){
-            if(a[i]=='1')count++;
+            if(a[i]=='1')countOne++;
         }
-        long long ans=count*(count-1)/2;
-        return ans;
+        return (long)countOne*(countOne-1)/2;
     }
 
 };

@@ -24,15 +24,15 @@ int minFlips (string s)
     // TC - O(n)
     // SC - O(1)
     bool flag=0;
-    int count1=0,count2=0,n=s.size();
+    int first=0,second=0,n=s.size();
     for(int i=0;i<n;i++){
-        if(flag!=s[i]-'0')count1++;
-        flag=!flag;
+        if(flag!=s[i]-'0')first++;
+        flag=!flag; 
     }
     flag=1;
     for(int i=0;i<n;i++){
-        if(flag!=s[i]-'0')count2++;
-        flag=!flag;
+        if(flag!=s[i]-'0')second++;
+        flag=!flag; 
     }
-    return min(count1,count2);
+    return min(first,second);
 }

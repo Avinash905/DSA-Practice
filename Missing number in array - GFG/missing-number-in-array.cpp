@@ -12,16 +12,17 @@ using namespace std;
 
 class Solution{
   public:
-    int missingNumber(vector<int>& array, int n) {
+    int missingNumber(vector<int>& arr, int n) {
         // Your code goes here
-        int actualSum=0,currentSum=0;
-        for(int i=1;i<=n;i++){
-            actualSum+=i;
+        // TC - O(n)
+        // SC - O(1)
+        for(int i=0;i<n-1;i++){
+            if(abs(arr[i])<n)arr[abs(arr[i])-1]*=-1;
         }
         for(int i=0;i<n-1;i++){
-            currentSum+=array[i];
+            if(arr[i]>0)return i+1;
         }
-        return actualSum-currentSum;
+        return n;
     }
 };
 

@@ -11,16 +11,11 @@ class Solution{
     void rotateArr(int arr[], int d, int n){
         // code here
         // TC - O(n)
-        // SC - O(n) 
-        if(d>n)d=abs(d)%n;
-        int temp[n];
-        for(int i=0;i<n;i++)temp[i]=arr[i];
-        
-        for(int i=0;i<n;i++){
-            temp[(n-d+i)%n]=arr[i];
-        }
-        
-        for(int i=0;i<n;i++)arr[i]=temp[i];
+        // SC - O(1)
+        d=d%n;
+        reverse(arr,arr+d);
+        reverse(arr+d,arr+n);
+        reverse(arr,arr+n);
     }
 };
 

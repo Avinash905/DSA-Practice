@@ -11,16 +11,21 @@ public:
 	// largest elements
 	int print2largest(int arr[], int n) {
 	    // code here
-	    
-	    int maxi=arr[0],secmaxi=-1;
+	    // TC - O(n)
+        // SC - O(1)
+        int first=0,second=-1;
+        
         for(int i=0;i<n;i++){
-            if(arr[i]>maxi){
-                secmaxi=maxi;
-                maxi=arr[i];
-            }
-            else if(arr[i]>secmaxi && arr[i]<maxi)secmaxi=arr[i];
+             if(arr[first]<arr[i]){
+                 second=first;
+                 first=i;
+             }
+             else if(arr[first]>arr[i]){
+                 if(arr[second]<arr[i] || second==-1)second=i;
+             }
         }
-        return secmaxi;
+        if(second==-1)return -1;
+        return arr[second];
 	}
 };
 

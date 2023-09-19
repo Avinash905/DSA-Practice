@@ -16,13 +16,11 @@ class Solution{
         // Your code goes here
         // TC - O(n)
         // SC - O(1)
-        for(int i=0;i<n-1;i++){
-            if(abs(arr[i])<n)arr[abs(arr[i])-1]*=-1;
+        int givenSum=accumulate(arr.begin(),arr.end(),0),actualSum=0;
+        for(int i=1;i<=n;i++){
+            actualSum+=i;
         }
-        for(int i=0;i<n-1;i++){
-            if(arr[i]>0)return i+1;
-        }
-        return n;
+        return actualSum-givenSum;
     }
 };
 

@@ -7,7 +7,8 @@ class Solution {
   public:
     string maxOdd(string s) {
         // your code here
-        
+        // TC - O(n)
+        // SC - O(1)
         int n=s.size();
         
         int i=n-1;

@@ -9,20 +9,15 @@ public:
         //complete the function here
         // TC - O(log(n))
         // SC - O(1)
-        int start=0,end=n-1,ans=INT_MAX;
+        int start=0,end=n-1;
         while(start<=end){
             int mid=start+(end-start)/2;
-            // left sorted
-            if(arr[start]<=arr[mid]){
-                ans=min(ans,arr[start]);
-                start=mid+1;
-            }
-            else{
-                ans=min(ans,arr[mid]);
-                end=mid-1;
-            }
+            
+            if(arr[mid]<arr[(n+mid-1)%n] && arr[mid]<arr[(mid+1)%n])return arr[mid];
+            else if(arr[mid]<arr[end])end=mid-1;
+            else start=mid+1;
         }
-        return ans;
+        return -1;
     }
 };
 

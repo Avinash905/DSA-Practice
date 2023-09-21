@@ -11,18 +11,13 @@ class Solution{
 	{
 		// Your code goes here
 		// TC - O(n)
-        // SC - O(1)
-        if(n<B-A+1) return false;
-        
-        for(int i=0;i<n;i++){
-            if(abs(arr[i])>=A && abs(arr[i])<=B && arr[abs(arr[i])-A]>0)arr[abs(arr[i])-A]*=-1;
-        }
-        int count=0;
-        for(int i=0;i<=B-A && i<n;i++){
-            if(arr[i]<0)count++;
-            else false;
-        }
-        return count==(B-A+1);
+		// SC - O(n)
+		unordered_map<int,int> mp;
+		
+		for(int i=0;i<n;i++){
+		    if(arr[i]>=A && arr[i]<=B)mp[arr[i]]++;
+		}
+		return (B-A+1)==mp.size();
 	}
 };
 	

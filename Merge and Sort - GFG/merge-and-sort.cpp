@@ -10,19 +10,22 @@ class Solution{
     int mergeNsort(int a[], int b[], int n, int m, int answer[])
     {
         // Write your code here
-        int arr[100001]={0};
+        // TC - O(n+m)
+        // SC - O(n+m)
         
-        for(int i=0;i<n;i++)arr[a[i]]++;
-        for(int i=0;i<m;i++)arr[b[i]]++;
-        
-        int count=0;
-        for(int i=0;i<100001;i++){
-            if(arr[i]>0){
-                answer[count]=i;
-                count++;
-            }
+        int freq[100001]={0};
+        for(int i=0;i<n;i++){
+            freq[a[i]]++;
         }
-        return count;
+        for(int i=0;i<m;i++){
+            freq[b[i]]++;
+        }
+        int j=0;
+        for(int i=1;i<100001;i++){
+            if(freq[i]>0)answer[j++]=i;
+        }
+        
+        return j;
     }
 };
 

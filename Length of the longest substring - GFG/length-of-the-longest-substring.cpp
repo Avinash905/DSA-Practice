@@ -6,24 +6,26 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
     public:
-    int longestUniqueSubsttr(string S){
+    int longestUniqueSubsttr(string s){
         //code
+        // TC - O(n)
+        // SC - O(1)
         int freq[26]={0};
-        int ans=0,i=0,j=0;
-        for(i=0;i<S.size();i++){
-            if(freq[S[i]-'a']==0){
-                freq[S[i]-'a']++;
-            }
-            else{
-                ans=max(ans,i-j);
-                while(S[j]!=S[i]){
-                    freq[S[j]-'a']--;
-                    j++;
+        int n=s.size(),i=0,j=0,ans=0;
+        
+        while(j<n){
+            freq[s[j]-'a']++;
+            ans=max(ans,j-i);
+            
+            if(freq[s[j]-'a']>1){
+                while(s[i]!=s[j]){
+                    freq[s[i++]-'a']--;
                 }
-                j++;
+                freq[s[i++]-'a']--;
             }
+            j++;
         }
-        ans=max(ans,i-j);
+        ans=max(ans,j-i);
         return ans;
     }
 };

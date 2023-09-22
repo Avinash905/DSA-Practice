@@ -21,18 +21,17 @@ int32_t main()
 int minFlips (string s)
 {
     // your code here
-    // TC - O(n)
-    // SC - O(1)
-    bool flag=0;
-    int first=0,second=0,n=s.size();
+    // TC - O()
+    // SC - O()
+    int n=s.size(),first=0,second=0,flag=0;
     for(int i=0;i<n;i++){
         if(flag!=s[i]-'0')first++;
-        flag=!flag; 
+        flag=!flag;
     }
     flag=1;
     for(int i=0;i<n;i++){
         if(flag!=s[i]-'0')second++;
-        flag=!flag; 
+        flag=!flag;
     }
     return min(first,second);
 }

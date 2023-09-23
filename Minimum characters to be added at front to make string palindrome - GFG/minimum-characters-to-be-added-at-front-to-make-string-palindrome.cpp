@@ -7,35 +7,32 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
 public:
-    int lps(string str){
-        int n=str.size();
-        char s[n+1];
+    int lps(string s,int size){
+        int n=s.size(),first=0,second=2;
         int lpsArr[n+1]={0};
-        
+        char str[n+1];
         for(int i=0;i<n;i++){
-            s[i+1]=str[i];
+            str[i+1]=s[i];
         }
-        
-        int first=0,second=2;
         while(second<=n){
-            if(s[first+1]==s[second]){
+            if(str[first+1]==str[second]){
                 lpsArr[second]=first+1;
                 first++;
                 second++;
             }
             else{
-                if(first==0)second++;
-                else first=lpsArr[first];
+                if(first!=0)first=lpsArr[first];
+                else second++;
             }
         }
-        return lpsArr[n];
+        return size-lpsArr[n];
     }
     int minChar(string str){
         //Write your code here
         string temp=str;
-        reverse(temp.begin(),temp.end());
-        string newStr=str+"$"+temp;
-        return str.size()-lps(newStr);
+        reverse(str.begin(),str.end());
+        temp+=("$"+str);
+        return lps(temp,str.size());
     }
 };
 

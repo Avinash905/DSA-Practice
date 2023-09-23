@@ -11,16 +11,15 @@ class Solution
     string reverseWords(string s) 
     { 
         // code here
-        // TC - O(n)
-        // SC - O(n)
+        int n=s.size();
         string str="",temp="";
-        for(int i=s.size()-1;i>=0;i--){
-            if(s[i]!='.')temp=s[i]+temp;
-            else{
-                temp+=".";
-                str+=temp;
+        for(int i=n-1;i>=0;i--){
+            
+            if(s[i]=='.'){
+                str+=temp+".";
                 temp="";
             }
+            else temp=s[i]+temp;
         }
         str+=temp;
         return str;

@@ -1,4 +1,4 @@
-# Aggressive Cow
+# Aggressive Cows
 ## Medium
 <div class="problems_problem_content__Xm_eO"><p>You are given an <strong>array</strong>&nbsp;consisting of <strong>n&nbsp;integers</strong> which denote the position of a <strong>stall</strong>. You are also given an <strong>integer</strong> <strong>k</strong> which denotes the number of aggressive cows. You are given the task of <strong>assigning stalls to k&nbsp;cows</strong> such that the <strong>minimum distance between any two of them is the maximum possible</strong>.<br>
 The first line of input contains two&nbsp;space-separated integers <strong>n</strong> and <strong>k</strong>.<br>

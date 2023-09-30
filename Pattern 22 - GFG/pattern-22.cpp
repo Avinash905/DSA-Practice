@@ -8,11 +8,9 @@ class Solution {
   public:
     void printSquare(int n) {
         // code here
-        // TC - O(n^2)
-        // SC - O(1)
-        for(int i=1;i<2*n;i++){
-            for(int j=1;j<2*n;j++){
-                cout<<max(abs(n-i)+1,abs(n-j)+1)<<" ";
+        for(int r=1;r<2*n;r++){
+            for(int c=1;c<2*n;c++){
+                cout<<max(abs(n-r)+1,abs(n-c)+1)<<" ";
             }
             cout<<endl;
         }

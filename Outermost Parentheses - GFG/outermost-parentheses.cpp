@@ -7,22 +7,15 @@ class Solution {
   public:
     string removeOuter(string& s) {
         // code here
-        // TC - O(n)
-        // SC - O(n)
-        string res="";
-        int start=0,openCount=0,closeCount=0;
-     
-        for (int i=0;i<s.size();i++){
-            if (s[i]=='(')openCount++;
-            if (s[i]==')')closeCount++;
-            
-            if(openCount==closeCount){
-                res+=s.substr(start+1,i-start-1);
-                start=i+1;
-            }
+        int brackets=0;
+        string ans="";
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='(')brackets++;
+            else brackets--;
+            if(brackets>1 && s[i]=='(')ans+=s[i];
+            else if(brackets>=1 && s[i]==')')ans+=s[i];
         }
-     
-        return res;
+        return ans;
     }
 };
 

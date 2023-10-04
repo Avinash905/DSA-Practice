@@ -11,7 +11,7 @@ public:
 	int search(string pat, string txt) {
 	    // code here
 	    // TC - O(N)
-        // SC - O(1)
+        // SC - O(n)
         int i=0,j=0,count=0,N=txt.size(),n=pat.size(),tempCount=0;
         unordered_map<char,int> patFreq;
         

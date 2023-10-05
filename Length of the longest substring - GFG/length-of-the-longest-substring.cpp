@@ -8,20 +8,20 @@ class Solution{
     public:
     int longestUniqueSubsttr(string s){
         //code
-        // TC - O(n)
-        // SC - O(1)
+        // TC - O(N)
+        // SC - O(26)
+        int i=0,j=0,ans=0;
         int freq[26]={0};
-        int n=s.size(),i=0,j=0,ans=0;
         
-        while(j<n){
+        while(j<s.size()){
             freq[s[j]-'a']++;
-            ans=max(ans,j-i);
-            
             if(freq[s[j]-'a']>1){
-                while(s[i]!=s[j]){
-                    freq[s[i++]-'a']--;
+                ans=max(ans,j-i);
+                
+                while(freq[s[j]-'a']>1){
+                    freq[s[i]-'a']--;
+                    i++;
                 }
-                freq[s[i++]-'a']--;
             }
             j++;
         }

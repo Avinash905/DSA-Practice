@@ -9,13 +9,9 @@ class Solution {
   public:
     long long squaresInChessBoard(long long N) {
         // code here
-        // TC - O(N)
+        // TC - O(1)
         // SC - O(1)
-        while(N){
-            ans+=1LL*N*N;
-            N--;
-        }
-        return ans;
+        return (N*(N+1)*(2*N+1))/6;
     }
 };
 

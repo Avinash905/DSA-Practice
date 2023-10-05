@@ -14,19 +14,15 @@ class Solution{
         // Your code goes here
         // TC - O(x)
         // SC - O(1)
-        
-        long long start=1,end=x/2,ans=1;
-        while(start<=end){
-           long long mid=start+(end-start)/2;
-           
-           if(mid==x/mid)return mid;
-           else if(mid<x/mid){
-               ans=mid;
-               start=mid+1;
-           }
-           else end=mid-1;
+        if(x==0)return 0;
+
+        long long n=1;
+        while(true){
+            if(n<x/n)n++;
+            else if(n==x/n)return n;
+            else return n-1;
         }
-        return ans;
+        return 0;
     }
 };
 

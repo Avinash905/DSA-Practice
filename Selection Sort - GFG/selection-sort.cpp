@@ -13,14 +13,12 @@ void swap(int *xp, int *yp)
 class Solution
 {
     public:
-    int select(int arr[], int i,int n)
+    int select(int arr[],int i,int n)
     {
         // code here such that selectionSort() sorts arr[]
         int minIdx=i;
-        for(int j=i;j<n;j++){
-            if(arr[j]<arr[minIdx]){
-                minIdx=j;
-            }
+        for(int j=i+1;j<n;j++){
+            if(arr[j]<arr[minIdx])minIdx=j;
         }
         return minIdx;
     }
@@ -28,11 +26,9 @@ class Solution
     void selectionSort(int arr[], int n)
     {
        //code here
-       // TC - O(n^2)
-       // SC - O(1)
-       for(int i=0;i<n-1;i++){
-           int idx=select(arr,i+1,n);
-           if(arr[i]>arr[idx])swap(arr[i],arr[idx]);
+       for(int i=0;i<n;i++){
+           int idx=select(arr,i,n);
+           if(arr[idx]<arr[i])swap(arr[idx],arr[i]);
        }
     }
 };

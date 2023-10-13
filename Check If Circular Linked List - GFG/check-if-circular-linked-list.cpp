@@ -71,15 +71,17 @@ struct Node
 }; 
 */
 
+bool solve(Node* head,Node* first){
+    if(head==NULL)return 0;
+    if(head->next==first)return 1;
+    
+    return (solve(head->next,first));
+}
+
 /* Should return true if linked list is circular, else false */
 bool isCircular(Node *head)
 {
    // Your code here
-   Node* temp=head->next;
    
-   while(temp!=head){
-       if(temp==NULL)return 0;
-       temp=temp->next;
-   }
-   return 1;
+   return solve(head,head);
 }

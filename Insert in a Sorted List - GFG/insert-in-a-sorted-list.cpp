@@ -42,6 +42,15 @@ struct Node
 
 class Solution{
   public:
+    void solve(struct Node* &head,int data){
+        if(head->next==NULL || head->next->data>=data){
+            Node* nodeToInsert=new Node(data);
+            nodeToInsert->next=head->next;
+            head->next=nodeToInsert;
+            return;
+        }
+        solve(head->next,data);
+    }
     // Should return head of the modified linked list
     Node *sortedInsert(struct Node* head, int data) {
         // Code here
@@ -50,15 +59,9 @@ class Solution{
         if(head->data>data){
             nodeToInsert->next=head;
             head=nodeToInsert;
+            return head;
         }
-        else{
-            Node* temp=head;
-            while(temp->next!=NULL && temp->next->data<=data){
-                temp=temp->next;
-            }
-            nodeToInsert->next=temp->next;
-            temp->next=nodeToInsert;
-        }
+        solve(head,data);
         return head;
     }
 };

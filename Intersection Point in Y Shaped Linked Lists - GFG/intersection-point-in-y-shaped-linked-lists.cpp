@@ -116,19 +116,33 @@ struct Node {
 int intersectPoint(Node* head1, Node* head2)
 {
     // Your Code Here
-    unordered_map<Node*,int> mp;
-    Node* temp1=head1;
+    int count1=0,count2=0;
+    Node* temp1=head1,*temp2=head2;
     
     while(temp1!=NULL){
-        mp[temp1]++;
+        count1++;
         temp1=temp1->next;
     }
-    
-    Node* temp2=head2;
     while(temp2!=NULL){
-        if(mp[temp2]==1)return temp2->data;
+        count2++;
         temp2=temp2->next;
     }
+    
+    while(count1>count2){
+        count1--;
+        head1=head1->next;
+    }
+    while(count1<count2){
+        count2--;
+        head2=head2->next;
+    }
+    
+    while(head1){
+        if(head1==head2)return head1->data;
+        head1=head1->next;
+        head2=head2->next;
+    }
+    
     return -1;
 }
 

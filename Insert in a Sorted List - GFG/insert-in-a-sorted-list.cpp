@@ -42,26 +42,22 @@ struct Node
 
 class Solution{
   public:
-    void solve(struct Node* &head,int data){
-        if(head->next==NULL || head->next->data>=data){
-            Node* nodeToInsert=new Node(data);
-            nodeToInsert->next=head->next;
-            head->next=nodeToInsert;
-            return;
-        }
-        solve(head->next,data);
-    }
     // Should return head of the modified linked list
     Node *sortedInsert(struct Node* head, int data) {
         // Code here
-        Node* nodeToInsert=new Node(data);
-        
-        if(head->data>data){
-            nodeToInsert->next=head;
-            head=nodeToInsert;
-            return head;
+        if(data<head->data){
+            Node *newNode=new Node(data);
+            newNode->next=head;
+            return newNode;
         }
-        solve(head,data);
+        
+        Node *temp=head;
+        while(temp->next && temp->next->data<=data){
+            temp=temp->next;
+        }
+        Node *newNode=new Node(data);
+        newNode->next=temp->next;
+        temp->next=newNode;
         return head;
     }
 };

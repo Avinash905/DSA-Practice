@@ -37,12 +37,15 @@ class Solution
     {
         // code here
         // return head of reversed list
-        if(head->next==NULL)return head;
+        Node *prev=NULL,*curr=head;
         
-        Node* temp=reverseList(head->next);
-        head->next->next=head;
-        head->next=NULL;
-        return temp;
+        while(curr){
+            curr=head->next;
+            head->next=prev;
+            prev=head;
+            head=curr;
+        }
+        return prev;
     }
     
 };

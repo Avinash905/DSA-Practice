@@ -69,19 +69,19 @@ struct Node {
 int sumOfLastN_Nodes(struct Node* head, int n)
 {
       // Code here
-      int totalSum=0,count=0;
-      Node* temp=head;
-
+      Node *temp=head;
+      int sum=0,nodes=0;
+      
       while(temp!=NULL){
-          totalSum+=temp->data;
-          temp=temp->next;
-          count++;
+        sum+=temp->data;
+        temp=temp->next;
+        nodes++;
       }
       temp=head;
-      while(count-n){
-          totalSum-=temp->data;
+      while(nodes-n){
+          sum-=temp->data;
           temp=temp->next;
-          count--;
+          nodes--;
       }
-      return totalSum;
+      return sum;
 }

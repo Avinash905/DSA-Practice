@@ -13,24 +13,20 @@ class Solution{
   public:		
 	int lps(string s) {
 	    // Your code goes here
-	    int n=s.size(),lpsArr[n+1]={0};
-	    string str=" ";
+	    int n=s.size(),lpsArr[n]={0},pre=0,suf=1;
 	    
-	    for(int i=0;i<n;i++)str+=s[i];
-	    
-	    int first=0,second=2;
-	    while(second<=n){
-	        if(str[first+1]!=str[second]){
-	            if(first==0)second++;
-	            else first=lpsArr[first];
+	    while(suf<n){
+	        if(s[pre]==s[suf]){
+	            lpsArr[suf]=pre+1;
+	            pre++,suf++;
 	        }
 	        else{
-	            lpsArr[second]=first+1;
-	            first++,second++;
+	            if(pre==0)lpsArr[suf++]=0;
+	            else pre=lpsArr[pre-1];
 	        }
 	    }
 	    
-	    return lpsArr[n];
+	    return lpsArr[n-1];
 	}
 };
 

@@ -21,7 +21,7 @@ class Solution{
 	            pre++,suf++;
 	        }
 	        else{
-	            if(pre==0)lpsArr[suf++]=0;
+	            if(pre==0)suf++;
 	            else pre=lpsArr[pre-1];
 	        }
 	    }

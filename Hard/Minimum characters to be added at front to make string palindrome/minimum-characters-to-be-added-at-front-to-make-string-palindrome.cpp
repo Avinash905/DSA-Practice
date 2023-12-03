@@ -7,7 +7,7 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
 public:
-    int lps(string s,int size) {
+    int lps(string s) {
 	    // Your code goes here
 	    int n=s.size(),lpsArr[n]={0},pre=0,suf=1;
 	    
@@ -15,20 +15,19 @@ public:
 	        if(s[pre]==s[suf]){
 	            lpsArr[suf]=pre+1;
 	            pre++,suf++;
-	        }
-	        else{
+	        }else{
 	            if(pre==0)suf++;
 	            else pre=lpsArr[pre-1];
 	        }
 	    }
-	    return size-lpsArr[n-1];
+	    
+	    return lpsArr[n-1];
 	}
     int minChar(string str){
         //Write your code here
         string temp=str;
         reverse(temp.begin(),temp.end());
-        str+=('$'+temp);
-        return lps(str,temp.size());
+        return str.size()-lps(str+'$'+temp);
     }
 };
 

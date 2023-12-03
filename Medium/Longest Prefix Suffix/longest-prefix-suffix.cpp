@@ -19,8 +19,7 @@ class Solution{
 	        if(s[pre]==s[suf]){
 	            lpsArr[suf]=pre+1;
 	            pre++,suf++;
-	        }
-	        else{
+	        }else{
 	            if(pre==0)suf++;
 	            else pre=lpsArr[pre-1];
 	        }

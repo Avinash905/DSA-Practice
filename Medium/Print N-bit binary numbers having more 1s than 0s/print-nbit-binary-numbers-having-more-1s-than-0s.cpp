@@ -7,20 +7,22 @@ using namespace std;
 //User function template for C++
 class Solution{
 public:
-void solve(int n,int z,int o,string temp,vector<string>& ans){
-        if(temp.size()==n){
-            ans.push_back(temp);
+    void solve(int N,int ones,string path,vector<string>& ans){
+        if(path.size()==N){
+            ans.push_back(path);
             return;
         }
-        solve(n,z,o+1,temp+"1",ans);
-        if(z<o)solve(n,z+1,o,temp+"0",ans);
+        solve(N,ones+1,path+'1',ans);
+        if(ones>path.size()-ones){
+            solve(N,ones,path+'0',ans);
+        }
     }
 	vector<string> NBitBinary(int N)
 	{
 	    // Your code goes here
 	    vector<string> ans;
-        solve(N,0,0,"",ans);
-        return ans;
+	    solve(N,0,"",ans);
+	    return ans;
 	}
 };
 
